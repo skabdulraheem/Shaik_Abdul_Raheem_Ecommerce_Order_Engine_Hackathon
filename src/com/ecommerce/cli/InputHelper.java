@@ -1,5 +1,4 @@
 package com.ecommerce.cli;
-
 import java.util.Scanner;
 
 public class InputHelper {
