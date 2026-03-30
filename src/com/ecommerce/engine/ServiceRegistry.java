@@ -2,12 +2,7 @@ package com.ecommerce.engine;
 
 import com.ecommerce.services.*;
 
-/**
- * Task 20: Microservice Simulation
- * Loosely couples all services — each service is independent and
- * communicates only through well-defined interfaces, not direct field access.
- * This class acts as the service registry / dependency injector.
- */
+
 public class ServiceRegistry {
 
     private final AuditService auditService;
@@ -21,7 +16,7 @@ public class ServiceRegistry {
     private final ConcurrencyEngine concurrencyEngine;
 
     public ServiceRegistry() {
-        // Build in dependency order
+      
         this.auditService          = new AuditService();
         this.productService        = new ProductService(auditService);
         this.cartService           = new CartService(productService, auditService);
