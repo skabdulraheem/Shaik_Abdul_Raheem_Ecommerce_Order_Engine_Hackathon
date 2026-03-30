@@ -8,13 +8,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Task 8: Order State Machine
- * Valid transitions:
- * CREATED → PENDING_PAYMENT → PAID → SHIPPED → DELIVERED
- *                           ↘ FAILED
- *                                          ↘ CANCELLED
- */
+
 public class OrderStateMachine {
 
     private static final Map<OrderStatus, Set<OrderStatus>> TRANSITIONS = new EnumMap<>(OrderStatus.class);
@@ -29,11 +23,11 @@ public class OrderStateMachine {
         TRANSITIONS.put(OrderStatus.SHIPPED,
                 EnumSet.of(OrderStatus.DELIVERED));
         TRANSITIONS.put(OrderStatus.DELIVERED,
-                EnumSet.noneOf(OrderStatus.class)); // terminal
+                EnumSet.noneOf(OrderStatus.class)); 
         TRANSITIONS.put(OrderStatus.FAILED,
-                EnumSet.noneOf(OrderStatus.class)); // terminal
+                EnumSet.noneOf(OrderStatus.class)); 
         TRANSITIONS.put(OrderStatus.CANCELLED,
-                EnumSet.noneOf(OrderStatus.class)); // terminal
+                EnumSet.noneOf(OrderStatus.class)); 
     }
 
     public boolean transition(Order order, OrderStatus newStatus) {
