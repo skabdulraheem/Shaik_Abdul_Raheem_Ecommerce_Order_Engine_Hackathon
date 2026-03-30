@@ -9,11 +9,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Task 4: Concurrency Simulation
- * Simulates multiple users trying to access the same product simultaneously.
- * Uses logical locking via ReentrantLock inside Product.
- */
+
 public class ConcurrencyEngine {
 
     private final ProductService productService;
@@ -24,10 +20,7 @@ public class ConcurrencyEngine {
         this.auditService = auditService;
     }
 
-    /**
-     * Simulate N users each trying to reserve `qtyPerUser` units of a product concurrently.
-     * Only as many users as stock allows should succeed.
-     */
+    
     public void simulateConcurrentAccess(String productId, int numUsers, int qtyPerUser) {
         Product product = productService.getProduct(productId);
         if (product == null) {
@@ -74,7 +67,7 @@ public class ConcurrencyEngine {
             });
         }
 
-        startLatch.countDown(); // fire!
+        startLatch.countDown(); 
 
         try {
             doneLatch.await(10, TimeUnit.SECONDS);
@@ -84,7 +77,7 @@ public class ConcurrencyEngine {
 
         executor.shutdown();
 
-        // Print results
+       
         results.forEach(r -> System.out.println("  " + r));
         System.out.printf("%n  Result → %d succeeded, %d failed%n", successCount.get(), failCount.get());
         System.out.printf("  Remaining available stock: %d%n", product.getAvailableStock());
