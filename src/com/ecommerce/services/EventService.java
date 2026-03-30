@@ -5,10 +5,7 @@ import com.ecommerce.models.Event;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * Task 14: Event-Driven System
- * Events execute in order; a failure stops subsequent events.
- */
+
 public class EventService {
     private final Queue<Event> eventQueue = new LinkedList<>();
     private final AuditService auditService;
@@ -23,7 +20,7 @@ public class EventService {
         auditService.log("EVENT QUEUED: " + event);
     }
 
-    /** Process all pending events in order; stops on first failure */
+   
     public void processAll() {
         System.out.println("  ---- Processing Event Queue ----");
         if (eventQueue.isEmpty()) {
@@ -46,7 +43,7 @@ public class EventService {
     private boolean process(Event event) {
         System.out.println("  Processing: " + event);
         auditService.log("EVENT PROCESSED: " + event);
-        // Simulate processing — each event type can hook into actual logic
+       
         return true;
     }
 
